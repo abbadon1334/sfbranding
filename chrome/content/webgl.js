@@ -24,19 +24,9 @@ BrandingLoginWebGL = {
 	},
 
 	initGL: function(texture, shader) {
-		var container = $("container");
-		container.contentDocument.body.style.margin = '0px';
-		container.contentDocument.body.style.width = '100%';
-		container.contentDocument.body.style.height = '100%';
-		var el = document.createElementNS("http://www.w3.org/1999/xhtml","canvas");
-		el.setAttribute('id', 'glcanvas');
-		el.setAttribute('style', 'background: #E52B38 url(placeholder.jpg) no-repeat right top;');
-		el.style.width  = '100%';
-		el.style.height  = '100%';
-		container.contentDocument.body.appendChild(el);
-		this.mCanvas = container.contentDocument.getElementById("glcanvas");
 		try
 		{
+			this.mCanvas = document.getElementById('glcanvas');
 			this.mGLContext = this.mCanvas.getContext("experimental-webgl");
 		}
 		catch(e) {
@@ -45,10 +35,21 @@ BrandingLoginWebGL = {
 		if (this.mGLContext) {
 			this.mEffect = new Effect(this.mGLContext, this.mCanvas.width, this.mCanvas.height);
 			this.mEffect.NewTexture(0,texture);
-			var value = this.getContents(shader);
-			this.mEffect.NewShader(value);
-			this.startTime = (new Date()).getTime();
-			this.renderLoop(this);
+			var value = this.readURI(shader);
+			if (value) {
+				this.mEffect.NewShader(value);
+				this.startTime = (new Date()).getTime();
+				this.renderLoop(this);
+			}	
+		}
+		else {
+			var imageObj = new Image();
+			var context = this.mCanvas.getContext('2d');
+			
+			imageObj.onload = function() {
+	        	context.drawImage(imageObj, 0, 0);
+	      	};
+			imageObj.src = 'chrome://sforg/content/placeholder.jpg';
 		}
 	},
 

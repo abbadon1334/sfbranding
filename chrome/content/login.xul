@@ -26,7 +26,7 @@
 	
 	<vbox align="stretch">
 		<stack>
-			<iframe id="container" type="chrome" width="400" height="120" src="about:blank" />
+			<html:canvas id="glcanvas" width="400" height="120"/>
 			<image src="logotrans.svg"/>
 			<image src="logo.png"/>
 		</stack>
