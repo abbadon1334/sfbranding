@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" [
+<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd" >
+%brandDTD;
+<!ENTITY % aboutDTD SYSTEM "chrome://branding/locale/about.dtd" >
+%aboutDTD;
+<!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd">
+%globalDTD;
+]>
+<html id="sitefusion-dialog"  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>&about.windowtitle;</title>
+  <link rel="stylesheet" href="chrome://global/skin/about.css" type="text/css"/>
+  <script type="application/javascript">
+	var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
+	window.onload = function() {document.getElementById('version').appendChild(document.createTextNode(appInfo.version))};
+  </script>
+</head>
+
+<body dir="&locale.dir;">
+  <div id="aboutLogoContainer" style="border: 0;">
+    <a target="_blank" id="vendorURL" href="&vendorURL;">
+      <img  src="about:logo" alt="&brandShortName;"/>
+<p id="version">&about.version; </p>
+    </a>
+  </div>
+
+  <ul id="aboutPageList">
+    <li>&about.copy.beforeLink; <a href="about:credits">&about.copy.linkTitle;</a> &about.copy.afterLink;</li>
+    <li>&about.license.beforeLink; <a href="about:license">&about.license.linkTitle;</a> &about.license.afterLink;</li>
+    <!-- Release notes link removed pending fix for bug 349985
+    <li>&about.relnotes.beforeLink; <a id="releaseNotesURL" href="">&about.relnotes.linkTitle;</a> &about.relnotes.afterLink;</li>
+    -->
+    <li>&about.buildconfig.beforeLink; <a href="about:buildconfig">&about.buildconfig.linkTitle;</a> &about.buildconfig.afterLink;</li>
+    <script type="application/javascript">
+      // get release notes URL from prefs
+      try {
+        var formatter = Components.classes["@mozilla.org/toolkit/URLFormatterService;1"]
+                                  .getService(Components.interfaces.nsIURLFormatter);
+        var releaseNotesURL = formatter.formatURLPref("app.releaseNotesURL");
+        var relnotes = document.getElementById("releaseNotesURL");
+        relnotes.setAttribute("href", releaseNotesURL);
+
+        var vendorURL = formatter.formatURLPref("app.vendorURL");
+        var vendor = document.getElementById("vendorURL");
+        vendor.setAttribute("href", vendorURL);
+      }
+      catch (ex) { /* no release notes and vendor URL for you without bug 349985 being fixed */ }
+
+      var ua = navigator.userAgent;
+      if (ua) {
+        var list = document.getElementById("aboutPageList");
+        var listItem = list.appendChild(document.createElement("li"));
+        listItem.appendChild(document.createTextNode("&about.buildIdentifier;"));
+        listItem.appendChild(document.createTextNode(ua));
+      }
+    </script>
+  </ul>
+
+</body>
+</html>

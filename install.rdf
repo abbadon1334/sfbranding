@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>branding@sitefusion.org</em:id>
+    <em:version>2.0.0</em:version>
+
+    <em:targetApplication>
+      <!-- SiteFusion -->
+      <Description>
+        <em:id>{58e7ba83-7f6f-4058-ab62-20556676f818}</em:id>
+        <em:minVersion>3.0.0</em:minVersion>
+        <em:maxVersion>3.*.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- front-end metadata -->
+    <em:name>SiteFusion.org Branding</em:name>
+    <em:description>Client branding for the SiteFusion.org SiteFusion client.</em:description>
+    <em:creator>SiteFusion.org</em:creator>
+    <em:homepageURL>http://www.sitefusion.org</em:homepageURL>
+  </Description>
+</RDF>

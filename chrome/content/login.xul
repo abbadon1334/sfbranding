@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window [
+	<!ENTITY % sitefusionDTD SYSTEM "chrome://sitefusion/locale/sitefusion.dtd">
+	%sitefusionDTD;
+	<!ENTITY % sforgDTD SYSTEM "chrome://sforg/locale/sforg.dtd">
+	%sforgDTD;
+]>
+
+<?xul-overlay href="chrome://sitefusion/content/loginMenuOverlay.xul"?>
+
+<window
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	id="sitefusion-window"
+	title="&sforglogin;"
+	accelerated="true"
+	onload="BrandingLoginWebGL.initGL('chrome://sforg/content/texture.jpg', 'chrome://sforg/content/shader.frag'); SiteFusion.Login.ParseCommandLineArguments(window.location); SiteFusion.Login.SetListener(SiteFusion.Login.ProgressListener); SiteFusion.Login.Init();">
+	
+	<script type="application/x-javascript" src="chrome://sitefusion/content/prototype.js"/>
+	<script type="application/x-javascript" src="chrome://sitefusion/content/sitefusion.js"/>
+	<script type="application/x-javascript" src="chrome://sitefusion/content/login.js"/>
+	<script type="application/x-javascript" src="chrome://sforg/content/effect.js"/>
+	<script type="application/x-javascript" src="chrome://sforg/content/webgl.js"/>
+	
+	<vbox align="stretch">
+		<stack>
+			<iframe id="container" type="chrome" width="400" height="120" src="about:blank" />
+			<image src="logotrans.svg"/>
+			<image src="logo.png"/>
+		</stack>
+
+		<progressmeter id="loginprogress" mode="determined"/>
+		<hbox style="overflow: hidden; max-width: -moz-available;" pack="center"><label id="loginprogress-info" value="&readytosignin;"/></hbox>
+		<spacer height="15"/>
+
+	    <vbox align="center">
+		    <grid>
+				<columns>
+					<column/>
+					<column/>
+				</columns>
+				<rows>
+					<row align="center">
+						<label value="&serverurl;"/>
+						<textbox id="address" width="200"/>
+					</row>
+					<row align="center">
+						<label value="&application;"/>
+						<textbox id="application" width="200"/>
+					</row>
+					<row align="center">
+						<label value="&arguments;"/>
+						<textbox id="arguments" width="200"/>
+					</row>
+					<row align="center">
+						<label value="&username;"/>
+						<textbox id="username" width="200"/>
+					</row>
+					<row align="center">
+						<label value="&password;"/>
+						<textbox id="password" type="password" width="200"/>
+					</row>
+				</rows>
+			</grid>
+	
+			<spacer height="15"/>
+		</vbox>
+		
+		<vbox align="stretch">
+			<hbox>
+				<button tabIndex="3" type="menu" label="&tools;">
+					<menupopup id="tools-popup">
+	        			<menu id="mnusitefusion" />
+        			</menupopup>
+				</button>
+				<spacer flex="1" />
+				<button id="button-login" oncommand="SiteFusion.Login.OnLogin(
+						document.getElementById('address').value,
+						document.getElementById('application').value,
+						document.getElementById('arguments').value,
+						document.getElementById('username').value,
+						document.getElementById('password').value,
+						true)
+						" label="&login;"/>
+				<button id="button-close" oncommand="SiteFusion.Login.OnClose()" label="&close;"/>
+			</hbox>
+		</vbox>
+		
+		<vbox align="center">
+			<spacer height="10"/>
+			<label class="text-link plain" href="&vendorLink;" value="&vendorLinkCaption;"/>
+			<spacer height="10"/>
+		</vbox>
+	</vbox>
+	<keyset>
+				<key keycode="VK_RETURN" oncommand="SiteFusion.Login.OnLogin(
+						document.getElementById('address').value,
+						document.getElementById('application').value,
+						document.getElementById('arguments').value,
+						document.getElementById('username').value,
+						document.getElementById('password').value,
+						true)
+						"/>
+	</keyset>
+</window>

@@ -1,0 +1,5 @@
+content  branding chrome/branding/
+content  sforg chrome/content/
+
+locale sforg en-US chrome/locale/en-US/
+locale sforg nl chrome/locale/nl/
