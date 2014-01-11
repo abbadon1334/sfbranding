@@ -9,7 +9,5 @@ pref("sitefusion.defaultChildWindowURI","chrome://sitefusion/content/childwindow
 pref("sitefusion.defaultPrefWindowURI","chrome://sitefusion/content/prefwindow.xul");
 pref("sitefusion.defaultDialogURI","chrome://sitefusion/content/dialog.xul");
 
-pref("webgl.verbose",true);
-pref("webgl.force-enabled",true);
 pref("breakpad.reportURL","http://crash-stats.mozilla.com/report/index/");
 pref("app.support.baseURL","http://www.sitefusion.org/");
