@@ -23,6 +23,29 @@ BrandingLoginWebGL = {
 	  return str;
 	},
 
+	readURI: function(uri) {
+	  var ioservice = Cc['@mozilla.org/network/io-service;1'].
+	    getService(Ci.nsIIOService);
+	  var channel = ioservice.newChannel(uri, 'UTF-8', null);
+	  var stream = channel.open();
+	
+	  var cstream = Cc['@mozilla.org/intl/converter-input-stream;1'].
+	    createInstance(Ci.nsIConverterInputStream);
+	  cstream.init(stream, 'UTF-8', 0, 0);
+	
+	  var str = {};
+	  var data = '';
+	  var read = 0;
+	  do {
+	    read = cstream.readString(0xffffffff, str);
+	    data += str.value;
+	  } while (read != 0);
+	
+	  cstream.close();
+	
+	  return data;
+	},
+        
 	initGL: function(texture, shader) {
 		try
 		{
