@@ -14,7 +14,7 @@
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	id="sitefusion-window"
-	title="&sforglogin;"
+	title="&sflogin;"
 	accelerated="true"
 	onload="BrandingWebGL.initGL('chrome://sforg/content/texture.jpg', 'chrome://sforg/content/shader.frag', 'chrome://sforg/content/placeholder.jpg'); SiteFusion.Login.ParseCommandLineArguments(window.location); SiteFusion.Login.SetListener(SiteFusion.Login.ProgressListener); SiteFusion.Login.Init();">
 	
