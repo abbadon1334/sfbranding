@@ -18,7 +18,6 @@
 	accelerated="true"
 	onload="BrandingWebGL.initGL('chrome://sforg/content/texture.jpg', 'chrome://sforg/content/shader.frag', 'chrome://sforg/content/placeholder.jpg'); SiteFusion.Login.SetListener(SiteFusion.Login.ProgressListener); SiteFusion.Login.Init(window.location);">
 	
-	<script type="application/x-javascript" src="chrome://sitefusion/content/prototype.js"/>
 	<script type="application/x-javascript" src="chrome://sitefusion/content/sitefusion.js"/>
 	<script type="application/x-javascript" src="chrome://sitefusion/content/login.js"/>
 	<script type="application/x-javascript" src="chrome://brandingwebgl/content/webgl.js"/>
