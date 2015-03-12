@@ -1,0 +1,3 @@
+[submodule "branding@sitefusion.org/chrome/brandingwebgl"]
+	path = branding@sitefusion.org/chrome/brandingwebgl
+	url = https://github.com/sitefusion/sfbranding-webgl.git
